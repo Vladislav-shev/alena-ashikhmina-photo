@@ -1,0 +1,17 @@
+{$SITE_ADDRESS} {
+  encode zstd gzip
+
+  header {
+    X-Content-Type-Options "nosniff"
+    Referrer-Policy "strict-origin-when-cross-origin"
+    X-Frame-Options "SAMEORIGIN"
+    -Server
+  }
+
+  reverse_proxy app:3000
+}
+
+:80 {
+  encode zstd gzip
+  reverse_proxy app:3000
+}
