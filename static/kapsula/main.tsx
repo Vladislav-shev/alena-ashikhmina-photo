@@ -1,0 +1,1 @@
+import React from"react";import{createRoot}from"react-dom/client";import Kapsula from"./Kapsula";import"./kapsula.css";createRoot(document.getElementById("root")!).render(<React.StrictMode><Kapsula/></React.StrictMode>);

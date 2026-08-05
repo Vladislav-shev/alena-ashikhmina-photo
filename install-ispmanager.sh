@@ -21,14 +21,21 @@ if [[ "$(readlink -f "${WEB_ROOT}")" != "${WEB_ROOT}" ]]; then
   exit 1
 fi
 
-. /etc/os-release
-if [[ "${ID:-}" != "ubuntu" && "${ID:-}" != "debian" ]]; then
-  echo "Автоустановка поддерживает Ubuntu и Debian."
-  exit 1
-fi
+MISSING_PACKAGES=()
+command -v curl >/dev/null 2>&1 || MISSING_PACKAGES+=(curl)
+command -v rsync >/dev/null 2>&1 || MISSING_PACKAGES+=(rsync)
+command -v tar >/dev/null 2>&1 || MISSING_PACKAGES+=(tar)
+[[ -f /etc/ssl/certs/ca-certificates.crt ]] || MISSING_PACKAGES+=(ca-certificates)
 
-apt-get update
-apt-get install -y ca-certificates curl rsync tar
+if ((${#MISSING_PACKAGES[@]})); then
+  . /etc/os-release
+  if [[ "${ID:-}" != "ubuntu" && "${ID:-}" != "debian" ]]; then
+    echo "Автоустановка недостающих пакетов поддерживает Ubuntu и Debian."
+    exit 1
+  fi
+  apt-get update
+  apt-get install -y "${MISSING_PACKAGES[@]}"
+fi
 
 TMP_DIR="$(mktemp -d)"
 trap 'rm -rf -- "${TMP_DIR}"' EXIT
@@ -60,4 +67,7 @@ find "${WEB_ROOT}" -type f -exec chmod 644 {} +
 echo
 echo "Сайт установлен в ${WEB_ROOT}"
 echo "Откройте: ${PUBLIC_URL}"
+echo "Версия «Кино»: ${PUBLIC_URL}/kino/"
+echo "Версия «Глянец»: ${PUBLIC_URL}/glianets/"
+echo "Версия «Капсула»: ${PUBLIC_URL}/kapsula/"
 echo "PHP можно оставить включённым: сайт раздаётся как статические файлы."

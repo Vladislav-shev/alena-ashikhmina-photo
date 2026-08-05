@@ -354,7 +354,14 @@ export default function Home() {
       <footer>
         <a className="logo footer-logo" href="#top">ГЛАВА<span>•</span></a>
         <p>Выпускные истории без школьных клише</p>
-        <div><a href="#albums">Альбомы</a><a href="#gallery">Портфолио</a><a href="#contact">Контакты</a></div>
+        <div>
+          <a href="#albums">Альбомы</a>
+          <a href="#gallery">Портфолио</a>
+          <a href="/kino/">Кино</a>
+          <a href="/glianets/">Глянец</a>
+          <a href="/kapsula/">Капсула</a>
+          <a href="#contact">Контакты</a>
+        </div>
         <span>© 2026 • Алёна Ашихмина</span>
       </footer>
     </main>
