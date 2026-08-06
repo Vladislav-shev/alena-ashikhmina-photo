@@ -21,7 +21,7 @@ export default function Kino() {
     <header className="kino-nav">
       <a className="kino-logo" href="/"><b>ГЛАВА</b><i>●</i><span>director's cut</span></a>
       <nav><a href="#trailer">Трейлер</a><a href="#scenes">Сцены</a><a href="#contact">Съёмка</a></nav>
-      <div className="version-switch"><a className="active" href="/kino/">Кино</a><a href="/glianets/">Глянец</a><a href="/kapsula/">Капсула</a></div>
+      <div className="version-switch"><a className="active" href="/kino/">Кино</a><a href="/glianets/">Глянец</a><a href="/kapsula/">Капсула</a><a href="/flash/">Ещё ↗</a></div>
     </header>
 
     <section className="kino-hero" id="trailer">

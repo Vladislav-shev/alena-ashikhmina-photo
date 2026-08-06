@@ -11,7 +11,7 @@ export default function Glianets(){
   const [sent,setSent]=useState(false);
   useEffect(()=>{const n=[...document.querySelectorAll<HTMLElement>("[data-pop]")];const o=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("pop")),{threshold:.15});n.forEach(x=>o.observe(x));return()=>o.disconnect()},[]);
   return <main className="gloss-shell">
-    <header className="gloss-nav"><a className="gloss-logo" href="/"><b>ГЛАВА</b><span>ISSUE №26</span></a><nav><a href="#cover">Обложка</a><a href="#inside">Внутри</a><a href="#order">Заказать</a></nav><div className="gloss-versions"><a href="/kino/">Кино</a><a className="active" href="/glianets/">Глянец</a><a href="/kapsula/">Капсула</a></div></header>
+    <header className="gloss-nav"><a className="gloss-logo" href="/"><b>ГЛАВА</b><span>ISSUE №26</span></a><nav><a href="#cover">Обложка</a><a href="#inside">Внутри</a><a href="#order">Заказать</a></nav><div className="gloss-versions"><a href="/kino/">Кино</a><a className="active" href="/glianets/">Глянец</a><a href="/kapsula/">Капсула</a><a href="/flash/">Ещё ↗</a></div></header>
     <section className="gloss-hero" id="cover">
       <div className="issue-rail"><span>АЛЁНА АШИХМИНА</span><span>ВЫПУСКНЫЕ АЛЬБОМЫ</span><span>ЛУГАНСК 2026</span></div>
       <div className="cover-card"><img src="/assets/gloss-hero.webp" alt="Выпускники на журнальной фотосессии"/><span className="cover-code">AA / 026</span><span className="cover-price">НЕ ПРОДАЁТСЯ<br/>ОСТАЁТСЯ НАВСЕГДА</span></div>

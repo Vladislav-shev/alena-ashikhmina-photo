@@ -6,7 +6,7 @@ export default function Kapsula(){
  const [memory,setMemory]=useState(0);const[sent,setSent]=useState(false);
  useEffect(()=>{const n=[...document.querySelectorAll<HTMLElement>("[data-rise]")];const o=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add("rise")),{threshold:.15});n.forEach(x=>o.observe(x));return()=>o.disconnect()},[]);
  return <main className="capsule-shell">
-  <header className="capsule-nav"><a href="/" className="capsule-logo">ГЛАВА<i>✦</i><span>архив чувств</span></a><nav><a href="#letter">Письмо</a><a href="#timeline">Время</a><a href="#save">Сохранить</a></nav><div className="capsule-versions"><a href="/kino/">Кино</a><a href="/glianets/">Глянец</a><a className="active" href="/kapsula/">Капсула</a></div></header>
+  <header className="capsule-nav"><a href="/" className="capsule-logo">ГЛАВА<i>✦</i><span>архив чувств</span></a><nav><a href="#letter">Письмо</a><a href="#timeline">Время</a><a href="#save">Сохранить</a></nav><div className="capsule-versions"><a href="/kino/">Кино</a><a href="/glianets/">Глянец</a><a className="active" href="/kapsula/">Капсула</a><a href="/flash/">Ещё ↗</a></div></header>
   <section className="capsule-hero">
    <div className="capsule-number">№ 2026—11A</div><img src="/assets/archive-hero.webp" alt="Друзья после уроков в тёплом вечернем свете"/>
    <div className="capsule-title"><p>Капсула времени для тех,<br/>кто пока ещё рядом.</p><h1>Однажды<br/>это станет<br/><em>бесценным.</em></h1></div>

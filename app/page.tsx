@@ -360,6 +360,9 @@ export default function Home() {
           <a href="/kino/">Кино</a>
           <a href="/glianets/">Глянец</a>
           <a href="/kapsula/">Капсула</a>
+          <a href="/flash/">Вспышка</a>
+          <a href="/2046/">2046</a>
+          <a href="/museum/">Музей</a>
           <a href="#contact">Контакты</a>
         </div>
         <span>© 2026 • Алёна Ашихмина</span>
