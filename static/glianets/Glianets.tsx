@@ -11,9 +11,9 @@ export default function Glianets(){
   const [sent,setSent]=useState(false);
   useEffect(()=>{const n=[...document.querySelectorAll<HTMLElement>("[data-pop]")];const o=new IntersectionObserver(e=>e.forEach(x=>x.isIntersecting&&x.target.classList.add("pop")),{threshold:.15});n.forEach(x=>o.observe(x));return()=>o.disconnect()},[]);
   return <main className="gloss-shell">
-    <header className="gloss-nav"><a className="gloss-logo" href="/"><b>ГЛАВА</b><span>ISSUE №26</span></a><nav><a href="#cover">Обложка</a><a href="#inside">Внутри</a><a href="#order">Заказать</a></nav><div className="gloss-versions"><a href="/kino/">Кино</a><a className="active" href="/glianets/">Глянец</a><a href="/kapsula/">Капсула</a><a href="/flash/">Ещё ↗</a></div></header>
+    <header className="gloss-nav"><a className="gloss-logo" href="/"><b>ГЛАВА</b><span>ISSUE №27</span></a><nav><a href="#cover">Обложка</a><a href="#inside">Внутри</a><a href="#order">Заказать</a></nav><div className="gloss-versions"><a href="/kino/">Кино</a><a className="active" href="/glianets/">Глянец</a><a href="/kapsula/">Капсула</a><a href="/flash/">Ещё ↗</a></div></header>
     <section className="gloss-hero" id="cover">
-      <div className="issue-rail"><span>АЛЁНА АШИХМИНА</span><span>ВЫПУСКНЫЕ АЛЬБОМЫ</span><span>ЛУГАНСК 2026</span></div>
+      <div className="issue-rail"><span>АЛЁНА АШИХМИНА × ЕКАТЕРИНА ЕРОХИНА</span><span>ВЫПУСКНЫЕ АЛЬБОМЫ</span><span>ЛУГАНСК 2027</span></div>
       <div className="cover-card"><img src="/assets/gloss-hero.webp" alt="Выпускники на журнальной фотосессии"/><span className="cover-code">AA / 026</span><span className="cover-price">НЕ ПРОДАЁТСЯ<br/>ОСТАЁТСЯ НАВСЕГДА</span></div>
       <div className="gloss-title"><p>Не альбом. <b>Ваш личный выпуск журнала.</b></p><h1>{covers[grade].map((word,index)=><span key={word} className={`line l${index}`}>{word}</span>)}</h1><div className="grade-pills">{(["4","9","11"] as const).map(item=><button key={item} onClick={()=>setGrade(item)} className={grade===item?"active":""}>{item} класс</button>)}</div></div>
       <div className="gloss-sticker">ТВОЁ<br/><i>ЛИЦО</i><br/>ТВОИ<br/>ПРАВИЛА</div>
@@ -31,10 +31,10 @@ export default function Glianets(){
 
     <section className="gloss-pages">
       <div className="pages-title" data-pop><span>104—160</span><h2>Страниц,<br/>где нет<br/><em>случайных</em><br/>людей.</h2></div>
-      <div className="page-stack" data-pop><div className="page p1"><img src="/assets/gallery-candid.webp" alt="Репортажная школьная съёмка"/><span>04 / AFTER CLASS</span></div><div className="page p2"><img src="/assets/album-flatlay.webp" alt="Готовый выпускной альбом"/><span>05 / OBJECT OF DESIRE</span></div><div className="page p3"><b>ВАШ<br/>КЛАСС</b><small>НА ОБЛОЖКЕ<br/>2026</small></div></div>
+      <div className="page-stack" data-pop><div className="page p1"><img src="/assets/gallery-candid.webp" alt="Репортажная школьная съёмка"/><span>04 / AFTER CLASS</span></div><div className="page p2"><img src="/assets/album-flatlay.webp" alt="Готовый выпускной альбом"/><span>05 / OBJECT OF DESIRE</span></div><div className="page p3"><b>ВАШ<br/>КЛАСС</b><small>НА ОБЛОЖКЕ<br/>2027</small></div></div>
     </section>
 
-    <section className="gloss-order" id="order"><div data-pop><span>SUBSCRIBE TO YOURSELF</span><h2>Следующий<br/>номер — <em>ваш.</em></h2><p>Расскажите, какой у вас класс. Алёна покажет полные альбомы и соберёт точный формат.</p></div>{sent?<div className="gloss-done"><b>ВЫ В НОМЕРЕ!</b><p>Пока это демонстрация. Перед запуском подключим реальную отправку.</p><button onClick={()=>setSent(false)}>Заполнить снова</button></div>:<form onSubmit={e=>{e.preventDefault();setSent(true)}}><input required placeholder="Имя"/><input required placeholder="Телефон или Telegram"/><select defaultValue="11"><option value="4">4 класс</option><option value="9">9 класс</option><option value="11">11 класс</option></select><button>Хочу свою обложку ↗</button></form>}</section>
-    <footer><b>ГЛАВА<span>●</span></b><p>© 2026 Алёна Ашихмина</p><a href="/">Основная версия ↗</a></footer>
+    <section className="gloss-order" id="order"><div data-pop><span>SUBSCRIBE TO YOURSELF</span><h2>Следующий<br/>номер — <em>ваш.</em></h2><p>Расскажите, какой у вас класс. Алёна и Екатерина покажут полные альбомы и соберут точный формат.</p></div>{sent?<div className="gloss-done"><b>ВЫ В НОМЕРЕ!</b><p>Пока это демонстрация. Перед запуском подключим реальную отправку.</p><button onClick={()=>setSent(false)}>Заполнить снова</button></div>:<form onSubmit={e=>{e.preventDefault();setSent(true)}}><input required placeholder="Имя"/><input required placeholder="Телефон или Telegram"/><select defaultValue="11"><option value="4">4 класс</option><option value="9">9 класс</option><option value="11">11 класс</option></select><button>Хочу свою обложку ↗</button></form>}</section>
+    <footer><b>ГЛАВА<span>●</span></b><p>© 2027 Алёна Ашихмина × Екатерина Ерохина</p><a href="/">Основная версия ↗</a></footer>
   </main>
 }

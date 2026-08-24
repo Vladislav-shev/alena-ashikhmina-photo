@@ -35,7 +35,7 @@ export default function Flash() {
     <section className="flash-hero" ref={hero} onPointerMove={move}>
       <img src="/assets/flash-hero.webp" alt="Выпускники на яркой съёмке с прямой вспышкой" />
       <div className="flash-noise" />
-      <p className="flash-kicker"><b>Алёна Ашихмина</b><span>Луганск / выпуск 2026</span></p>
+      <p className="flash-kicker"><b>Алёна Ашихмина × Екатерина Ерохина</b><span>Луганск / выпуск 2027</span></p>
       <h1><span>{moods[mood].title.split(" ").slice(0, -1).join(" ") || "НЕ"}</span><em>{moods[mood].title.split(" ").at(-1)}</em></h1>
       <p className="flash-note">{moods[mood].note}</p>
       <div className="flash-meter" aria-label="Настроение съёмки">
@@ -64,7 +64,7 @@ export default function Flash() {
     </section>
 
     <section className="flash-start" id="start">
-      <div data-flash-in><span>READY?</span><h2>Включаем<br /><em>вспышку?</em></h2><p>Алёна покажет полные съёмки и поможет собрать формат под ваш класс.</p></div>
+      <div data-flash-in><span>READY?</span><h2>Включаем<br /><em>вспышку?</em></h2><p>Алёна и Екатерина покажут полные съёмки и помогут собрать формат под ваш класс.</p></div>
       {sent ? <div className="flash-done"><b>СНЯТО!</b><p>Это демонстрация формы. Перед рекламой подключим реальную отправку заявок.</p><button onClick={() => setSent(false)}>Ещё дубль</button></div> : <form onSubmit={(event) => { event.preventDefault(); setSent(true); }}>
         <label>ИМЯ<input required placeholder="Например, Ольга" /></label>
         <label>КЛАСС<select defaultValue="11"><option value="4">4 класс</option><option value="9">9 класс</option><option value="11">11 класс</option></select></label>
@@ -73,6 +73,6 @@ export default function Flash() {
       </form>}
     </section>
 
-    <footer><a href="/">ГЛАВА⚡</a><p>Алёна Ашихмина · выпускные истории</p><a href="/">Основная версия ↗</a></footer>
+    <footer><a href="/">ГЛАВА⚡</a><p>Алёна Ашихмина × Екатерина Ерохина · выпускные истории</p><a href="/">Основная версия ↗</a></footer>
   </main>;
 }

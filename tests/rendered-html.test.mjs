@@ -29,5 +29,17 @@ test("renders development preview metadata", async () => {
     response.headers.get("content-type") ?? "",
     /^text\/html\b/i,
   );
-  assert.match(await response.text(), developmentPreviewMeta);
+  const html = await response.text();
+  assert.match(html, developmentPreviewMeta);
+  assert.match(html, /КАПСУЛА/);
+  assert.match(html, /Первый кадр/);
+  assert.match(html, /На память/);
+  assert.match(html, /Яркие моменты/);
+  assert.match(html, /Вся история/);
+  assert.match(html, /Специальный выпуск/);
+  assert.match(html, /tel:\+79591236876/);
+  assert.match(html, /tel:\+79591621807/);
+  assert.match(html, /Луганск и область/);
+  assert.match(html, /2027/);
+  assert.doesNotMatch(html, /\b2026\b/);
 });

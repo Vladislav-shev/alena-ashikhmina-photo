@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
 const years = [
-  { year: 2026, value: "сейчас", title: "Обычный вторник", text: "Вы видите друг друга каждый день — и пока не замечаете, насколько это редкое время." },
-  { year: 2031, value: "+5 лет", title: "Первый большой сбор", text: "Встреча назначена за месяц. Но один кадр возвращает класс быстрее любого чата." },
-  { year: 2036, value: "+10 лет", title: "Знакомый смех", text: "Города и профессии изменились. Манера смеяться у каждого осталась прежней." },
-  { year: 2041, value: "+15 лет", title: "Имена на полях", text: "Тетради потерялись. Подписи, взгляды и свои компании остались внутри альбома." },
-  { year: 2046, value: "+20 лет", title: "Архив оживает", text: "Это уже не школьные фотографии. Это координаты места, где вы были вместе." },
+  { year: 2027, value: "сейчас", title: "Обычный вторник", text: "Вы видите друг друга каждый день — и пока не замечаете, насколько это редкое время." },
+  { year: 2032, value: "+5 лет", title: "Первый большой сбор", text: "Встреча назначена за месяц. Но один кадр возвращает класс быстрее любого чата." },
+  { year: 2037, value: "+10 лет", title: "Знакомый смех", text: "Города и профессии изменились. Манера смеяться у каждого осталась прежней." },
+  { year: 2042, value: "+15 лет", title: "Имена на полях", text: "Тетради потерялись. Подписи, взгляды и свои компании остались внутри альбома." },
+  { year: 2047, value: "+20 лет", title: "Архив оживает", text: "Это уже не школьные фотографии. Это координаты места, где вы были вместе." },
 ];
 
 export default function Future() {
@@ -29,8 +29,8 @@ export default function Future() {
     <section className="future-hero">
       <img src="/assets/future-hero.webp" alt="Выпускники в светлом футуристическом школьном атриуме" />
       <div className="future-grid" />
-      <div className="future-status"><i /> MEMORY CAPTURE ACTIVE <span>11A / 2026</span></div>
-      <div className="future-title"><p>АЛЁНА АШИХМИНА СОХРАНЯЕТ</p><h1>ВАС.<br /><em>ПОКА ВЫ</em><br />НАСТОЯЩИЕ.</h1><div><b>20</b><span>лет до момента,<br />когда эти кадры<br />станут бесценными</span></div></div>
+      <div className="future-status"><i /> MEMORY CAPTURE ACTIVE <span>11-А / 2027</span></div>
+      <div className="future-title"><p>АЛЁНА АШИХМИНА × ЕКАТЕРИНА ЕРОХИНА СОХРАНЯЮТ</p><h1>ВАС.<br /><em>ПОКА ВЫ</em><br />НАСТОЯЩИЕ.</h1><div><b>20</b><span>лет до момента,<br />когда эти кадры<br />станут бесценными</span></div></div>
       <a href="#memory" className="future-enter"><span>Открыть архив</span><b>↘</b></a>
       <div className="future-coords">48.5740° N<br />39.3078° E</div>
     </section>
@@ -70,12 +70,12 @@ export default function Future() {
     </section>
 
     <section className="future-backup" id="backup">
-      <div data-sync><span>BACKUP REQUEST</span><h2>Сохранить<br />ваш класс?</h2><p>Оставьте контакт. Алёна покажет полные проекты и предложит точный формат.</p></div>
+      <div data-sync><span>BACKUP REQUEST</span><h2>Сохранить<br />ваш класс?</h2><p>Оставьте контакт. Алёна и Екатерина покажут полные проекты и предложат точный формат.</p></div>
       {sent ? <div className="future-done"><i>✓</i><b>КОПИЯ СОЗДАНА</b><p>Пока это демонстрация. Перед запуском подключим Telegram, CRM или почту.</p><button onClick={() => setSent(false)}>Новая запись</button></div> : <form onSubmit={(event) => { event.preventDefault(); setSent(true); }}>
         <label>ИМЯ<input required placeholder="Как к вам обращаться" /></label><label>КЛАСС<select defaultValue="11"><option value="4">4 класс</option><option value="9">9 класс</option><option value="11">11 класс</option></select></label><label>КАНАЛ СВЯЗИ<input required placeholder="Телефон или Telegram" /></label><button>CREATE BACKUP <span>→</span></button>
       </form>}
     </section>
 
-    <footer><a href="/">ГЛАВА / 2046</a><p>Алёна Ашихмина · Луганск</p><span>END OF ARCHIVE_</span></footer>
+    <footer><a href="/">ГЛАВА / 2046</a><p>Алёна Ашихмина × Екатерина Ерохина · Луганск</p><span>END OF ARCHIVE_</span></footer>
   </main>;
 }

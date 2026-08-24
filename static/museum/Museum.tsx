@@ -26,15 +26,15 @@ export default function Museum() {
 
     <section className="museum-hero">
       <img src="/assets/museum-hero.webp" alt="Современный групповой портрет выпускников в музейном пространстве" />
-      <div className="museum-plaque"><span>COLLECTION № 11—A</span><b>2026</b></div>
-      <div className="museum-title"><p>АЛЁНА АШИХМИНА ПРЕДСТАВЛЯЕТ</p><h1>ЧАСТНАЯ<br /><em>КОЛЛЕКЦИЯ</em><br />ВАШЕГО КЛАССА</h1></div>
+      <div className="museum-plaque"><span>COLLECTION № 11—А</span><b>2027</b></div>
+      <div className="museum-title"><p>АЛЁНА АШИХМИНА × ЕКАТЕРИНА ЕРОХИНА ПРЕДСТАВЛЯЮТ</p><h1>ЧАСТНАЯ<br /><em>КОЛЛЕКЦИЯ</em><br />ВАШЕГО КЛАССА</h1></div>
       <p className="museum-caption">Пять людей. Один момент.<br />Экспонат с неограниченным сроком ценности.</p>
       <a className="museum-ticket" href="#curator"><span>Войти<br />в зал</span><b>↓</b></a>
     </section>
 
     <section className="museum-curator" id="curator">
       <aside data-exhibit>ЗАЛ I<br />КУРАТОРСКИЙ ТЕКСТ</aside>
-      <div data-exhibit><span>Уважаемый посетитель,</span><h2>перед вами люди,<br />которые пока не знают,<br /><em>что уже стали историей.</em></h2><p>Мы привыкли считать школьные годы черновиком взрослой жизни. Но именно сейчас рядом находятся люди, которые видят друг друга каждый день. Эта коллекция создана, чтобы однажды вернуть не лица — ощущение близости.</p><b>Алёна Ашихмина <i>автор и хранитель</i></b></div>
+      <div data-exhibit><span>Уважаемый посетитель,</span><h2>перед вами люди,<br />которые пока не знают,<br /><em>что уже стали историей.</em></h2><p>Мы привыкли считать школьные годы черновиком взрослой жизни. Но именно сейчас рядом находятся люди, которые видят друг друга каждый день. Эта коллекция создана, чтобы однажды вернуть не лица — ощущение близости.</p><b>Алёна Ашихмина × Екатерина Ерохина <i>авторы и хранители</i></b></div>
     </section>
 
     <section className="museum-work" id="collection">
@@ -54,7 +54,7 @@ export default function Museum() {
       <div className="catalogue-heading" data-exhibit><span>КАТАЛОГ КОЛЛЕКЦИИ</span><h2>Каждый<br />заслуживает<br /><em>своей стены.</em></h2></div>
       <div className="catalogue-grid">
         <article data-exhibit><div><img src="/assets/gallery-classroom.webp" alt="Выпускники в школьном классе" /></div><span>CAT. 004</span><h3>Среда</h3><p>Школа остаётся узнаваемой, но перестаёт быть скучной декорацией.</p></article>
-        <article data-exhibit><div><img src="/assets/alena-ashikhmina.webp" alt="Фотограф Алёна Ашихмина" /></div><span>CAT. 005</span><h3>Автор</h3><p>Человек за камерой, рядом с которым не нужно играть чужую роль.</p></article>
+        <article data-exhibit><div><img src="/assets/alena-ashikhmina.webp" alt="Стилизованный образ фотографа" /></div><span>CAT. 005</span><h3>Авторы</h3><p>Люди за камерой, рядом с которыми не нужно играть чужую роль.</p></article>
         <article data-exhibit><div><img src="/assets/album-flatlay.webp" alt="Печатный выпускной альбом" /></div><span>CAT. 006</span><h3>Объект</h3><p>Печатное издание, которое можно держать, передавать и открывать снова.</p></article>
       </div>
     </section>
@@ -65,12 +65,12 @@ export default function Museum() {
     </section>
 
     <section className="museum-visit" id="visit">
-      <div data-exhibit><span>PRIVATE VIEWING</span><h2>Заказать<br />частный<br /><em>просмотр.</em></h2><p>Алёна покажет полные альбомы, расскажет о съёмке и рассчитает формат для вашего класса.</p></div>
+      <div data-exhibit><span>PRIVATE VIEWING</span><h2>Заказать<br />частный<br /><em>просмотр.</em></h2><p>Алёна и Екатерина покажут полные альбомы, расскажут о съёмке и рассчитают формат для вашего класса.</p></div>
       {sent ? <div className="museum-done"><span>◆</span><b>ВИЗИТ ЗАПИСАН</b><p>Это демонстрационная форма. Перед рекламным запуском подключим реальную отправку.</p><button onClick={() => setSent(false)}>Записать ещё</button></div> : <form onSubmit={(event) => { event.preventDefault(); setSent(true); }}>
         <label>ИМЯ ПОСЕТИТЕЛЯ<input required placeholder="Например, Ольга" /></label><label>КЛАСС<select defaultValue="11"><option value="4">4 класс</option><option value="9">9 класс</option><option value="11">11 класс</option></select></label><label>КОНТАКТ<input required placeholder="Телефон или Telegram" /></label><button>ЗАБРОНИРОВАТЬ ПРОСМОТР <span>↗</span></button>
       </form>}
     </section>
 
-    <footer><a href="/">ГЛАВА ◆</a><p>Алёна Ашихмина · Луганск · 2026</p><span>Коллекция открыта ежедневно в памяти владельца.</span></footer>
+    <footer><a href="/">ГЛАВА ◆</a><p>Алёна Ашихмина × Екатерина Ерохина · Луганск · 2027</p><span>Коллекция открыта ежедневно в памяти владельца.</span></footer>
   </main>;
 }

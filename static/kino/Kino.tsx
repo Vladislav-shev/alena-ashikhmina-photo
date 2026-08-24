@@ -28,7 +28,7 @@ export default function Kino() {
       <img src="/assets/cinema-hero.webp" alt="Выпускники в кинематографичной школьной сцене" />
       <div className="kino-grade">11 <span>класс</span></div>
       <div className="kino-hero-copy">
-        <p><span>Алёна Ашихмина представляет</span><b>Луганск · 2026</b></p>
+        <p><span>Алёна Ашихмина и Екатерина Ерохина представляют</span><b>Луганск · 2027</b></p>
         <h1>Ваш класс.<br /><em>Главные роли.</em></h1>
         <div className="kino-intro"><b>Не фотосессия.</b><span>Полнометражная история про людей, с которыми вы выросли.</span></div>
       </div>
@@ -69,6 +69,6 @@ export default function Kino() {
         <button>Запустить съёмку <span>↗</span></button>
       </form>}
     </section>
-    <footer><b>ГЛАВА<span>●</span></b><p>Алёна Ашихмина · выпускные истории</p><a href="/">Основная версия ↗</a></footer>
+    <footer><b>ГЛАВА<span>●</span></b><p>Алёна Ашихмина × Екатерина Ерохина · выпускные истории</p><a href="/">Основная версия ↗</a></footer>
   </main>;
 }
