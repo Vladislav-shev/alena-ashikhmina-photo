@@ -18,6 +18,8 @@ import {
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { checkProduction } from "./check-production.mjs";
+import { checkLegalProfile } from "./check-legal-profile.mjs";
 
 const PROJECT_ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCE_DIR = path.join(PROJECT_ROOT, "ispmanager-dist");
@@ -26,13 +28,9 @@ const PUBLIC_URL = "https://альбом-лнр.рф";
 const MAX_BACKUPS = 5;
 
 const routes = [
-  ["Основная версия", "", "index.html"],
-  ["Кино", "kino/", "kino/index.html"],
-  ["Глянец", "glianets/", "glianets/index.html"],
-  ["Капсула", "kapsula/", "kapsula/index.html"],
-  ["Вспышка", "flash/", "flash/index.html"],
-  ["2046", "2046/", "2046/index.html"],
-  ["Музей", "museum/", "museum/index.html"],
+  ["Главная", "", "index.html"],
+  ["Условия и реквизиты", "legal/", "legal/index.html"],
+  ["Политика персональных данных", "privacy/", "privacy/index.html"],
 ];
 
 function isInside(parent, candidate) {
@@ -278,6 +276,9 @@ async function main() {
       console.log(`${label}: ${PUBLIC_URL}/${route}`);
     }
     console.log("\nДля следующего обновления: npm run update");
+    await checkLegalProfile({ strict: false });
+    console.log("\nПроверяю сайт снаружи…");
+    await checkProduction({ strict: false });
   } finally {
     await rm(lockDir, { recursive: true, force: true });
   }

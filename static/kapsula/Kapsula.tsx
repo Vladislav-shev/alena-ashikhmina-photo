@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { contacts } from "../../content/site-config";
 
 const years = [
   {
@@ -105,23 +106,22 @@ const tariffs = [
   },
 ];
 
-const contacts = [
-  { name: "Алёна Ашихмина", phone: "+7 (959) 123-68-76", href: "tel:+79591236876" },
-  { name: "Екатерина Ерохина", phone: "+7 (959) 162-18-07", href: "tel:+79591621807" },
-];
-
 export default function Kapsula() {
   const [memory, setMemory] = useState(0);
   const [selectedTariff, setSelectedTariff] = useState("Вся история");
 
   useEffect(() => {
+    document.documentElement.classList.add("motion-ready");
     const elements = [...document.querySelectorAll<HTMLElement>("[data-rise]")];
     const observer = new IntersectionObserver(
       (entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add("rise")),
       { threshold: 0.12 },
     );
     elements.forEach((element) => observer.observe(element));
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      document.documentElement.classList.remove("motion-ready");
+    };
   }, []);
 
   const chooseTariff = (name: string) => {
@@ -146,10 +146,18 @@ export default function Kapsula() {
 
       <section className="capsule-hero" id="top">
         <div className="capsule-number">КОЛЛЕКЦИЯ 2027 · ЛУГАНСК И ОБЛАСТЬ</div>
-        <img src="/assets/archive-hero.webp" alt="Друзья после уроков в тёплом вечернем свете" />
+        <img
+          src="/assets/archive-hero.webp"
+          alt="Выпускники после уроков в тёплом вечернем свете"
+          width="1536"
+          height="1024"
+          fetchPriority="high"
+          decoding="async"
+        />
         <div className="capsule-title">
           <p>Выпускной альбом как капсула времени<br />для тех, кто пока ещё рядом.</p>
-          <h1>Однажды<br />это станет<br /><em>бесценным.</em></h1>
+          <h1>Выпускные<br />альбомы <em>2027</em><br /><span>в Луганске</span></h1>
+          <strong>Однажды это станет бесценным.</strong>
           <a href="#tariffs" className="hero-tariff-link">Выбрать свою капсулу <span>↘</span></a>
         </div>
         <div className="capsule-note">сезон<br /><b>2027</b><span>открыть через 10 лет</span></div>
@@ -168,16 +176,29 @@ export default function Kapsula() {
 
       <section className="capsule-objects" aria-label="Школьные воспоминания">
         <div className="object-photo op1" data-rise>
-          <img src="/assets/gallery-candid.webp" alt="Живой кадр выпускников на перемене" />
+          <img src="/assets/gallery-candid.webp" alt="Живой кадр выпускников на перемене" width="1122" height="1402" loading="lazy" decoding="async" />
           <span>перемена, которую никто не планировал</span>
         </div>
         <div className="object-quote" data-rise>«Сфотографируйте<br />нас такими,<br /><em>как есть</em>»</div>
         <div className="object-photo op2" data-rise>
-          <img src="/assets/gallery-group.webp" alt="Компания школьных друзей" />
+          <img src="/assets/gallery-group.webp" alt="Компания школьных друзей" width="1122" height="1402" loading="lazy" decoding="async" />
           <span>те самые люди</span>
         </div>
         <div className="tape tape1">НЕ ЗАБУДЬ</div>
         <div className="tape tape2">ВАШ КЛАСС / 2027</div>
+      </section>
+
+      <section className="capsule-grades" aria-labelledby="grades-title">
+        <div className="grades-heading" data-rise>
+          <span>ДЛЯ КАЖДОГО ВЫПУСКА</span>
+          <h2 id="grades-title">Выпускные альбомы<br /><em>для 4, 9 и 11 классов.</em></h2>
+          <p>Снимаем в Луганске и по области: в школе, студии или парке. Сценарий съёмки и наполнение альбома подстраиваем под возраст и характер класса.</p>
+        </div>
+        <div className="grades-grid">
+          <article data-rise><b>04</b><h3>Начальная школа</h3><p>Сохраняем первый большой школьный этап, учителя, друзей и живые общие кадры.</p></article>
+          <article data-rise><b>09</b><h3>Девятый класс</h3><p>Соединяем портреты, компании, цитаты и историю класса перед первым серьёзным выбором.</p></article>
+          <article data-rise><b>11</b><h3>Одиннадцатый класс</h3><p>Создаём полноценный выпуск: от личной обложки до большой общей фотографии и страниц с друзьями.</p></article>
+        </div>
       </section>
 
       <section className="capsule-tariffs" id="tariffs">
@@ -187,6 +208,7 @@ export default function Kapsula() {
             <h2>Выберите тариф<br /><em>для себя.</em></h2>
           </div>
           <p>Стоимость актуальна при заказе от 15 альбомов. При меньшем количестве условия обсуждаются отдельно.</p>
+          <small>Итоговую стоимость, единицу расчёта, сроки и условия оплаты фиксируем в письменном договоре до начала работ.</small>
         </div>
         <div className="tariff-list">
           {tariffs.map((tariff) => (
@@ -237,7 +259,14 @@ export default function Kapsula() {
           <h3>{years[memory].title}</h3>
           <p>{years[memory].text}</p>
           <div className="timeline-picture">
-            <img src={memory === 0 ? "/assets/gallery-classroom.webp" : memory === 1 ? "/assets/album-flatlay.webp" : "/assets/gallery-candid.webp"} alt="Фотография как воспоминание" />
+            <img
+              src={memory === 0 ? "/assets/gallery-classroom.webp" : memory === 1 ? "/assets/album-flatlay.webp" : "/assets/gallery-candid.webp"}
+              alt="Фотография как школьное воспоминание"
+              width={memory === 1 ? 1023 : 1122}
+              height={memory === 1 ? 1537 : 1402}
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </div>
       </section>
@@ -249,6 +278,35 @@ export default function Kapsula() {
           <article data-rise><b>02</b><h3>Снимаем</h3><p>Помогаем чувствовать себя уверенно, но оставляем место живым эмоциям.</p></article>
           <article data-rise><b>03</b><h3>Собираем</h3><p>Соединяем портреты, компании, учителей и детали в одну цельную историю.</p></article>
           <article data-rise><b>04</b><h3>Печатаем</h3><p>Создаём вещь, которую можно держать в руках и однажды открыть снова.</p></article>
+        </div>
+      </section>
+
+      <section className="capsule-faq" id="faq" aria-labelledby="faq-title">
+        <div className="faq-heading" data-rise>
+          <span>ПЕРЕД СЪЁМКОЙ</span>
+          <h2 id="faq-title">Частые<br /><em>вопросы.</em></h2>
+        </div>
+        <div className="faq-list">
+          <details data-rise>
+            <summary>Для каких классов вы снимаете?</summary>
+            <p>Создаём выпускные альбомы для 4, 9 и 11 классов в Луганске и населённых пунктах области.</p>
+          </details>
+          <details data-rise>
+            <summary>Где проходит фотосессия?</summary>
+            <p>В школе, студии или парке. Локацию выбирает класс; для тарифов с несколькими съёмками можно сочетать разные места.</p>
+          </details>
+          <details data-rise>
+            <summary>Можно заказать меньше 15 альбомов?</summary>
+            <p>Да. Условия и итоговая стоимость для небольшого тиража обсуждаются отдельно до заключения договора.</p>
+          </details>
+          <details data-rise>
+            <summary>Когда утверждаются макет и сроки?</summary>
+            <p>Состав альбома, порядок согласования, сроки изготовления, стоимость и оплата фиксируются в письменном договоре до начала работ.</p>
+          </details>
+          <details data-rise>
+            <summary>Можно ли публиковать фотографии класса?</summary>
+            <p>Только при наличии отдельного согласия совершеннолетнего ученика либо законного представителя несовершеннолетнего. Согласие на публикацию не является условием заказа альбома.</p>
+          </details>
         </div>
       </section>
 
@@ -264,7 +322,7 @@ export default function Kapsula() {
             <article key={contact.phone}>
               <span>0{index + 1} / ФОТОГРАФ</span>
               <h3>{contact.name}</h3>
-              <a href={contact.href}>{contact.phone}<i>↗</i></a>
+              <a href={`tel:${contact.phoneE164}`}>{contact.phone}<i>↗</i></a>
               <p>Нажмите на номер, чтобы позвонить</p>
             </article>
           ))}
@@ -275,6 +333,10 @@ export default function Kapsula() {
       <footer>
         <a href="#top">КАПСУЛА<i>✦</i></a>
         <p>Алёна Ашихмина · Екатерина Ерохина<br />Луганск и область · 2027</p>
+        <nav aria-label="Правовая информация">
+          <a href="/legal/">Условия и реквизиты</a>
+          <a href="/privacy/">Персональные данные</a>
+        </nav>
         <span>Сделано, чтобы не забыть.</span>
       </footer>
     </main>

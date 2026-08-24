@@ -13,12 +13,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "static/index.html"),
-        kino: resolve(__dirname, "static/kino/index.html"),
-        glianets: resolve(__dirname, "static/glianets/index.html"),
-        kapsula: resolve(__dirname, "static/kapsula/index.html"),
-        flash: resolve(__dirname, "static/flash/index.html"),
-        archive2046: resolve(__dirname, "static/2046/index.html"),
-        museum: resolve(__dirname, "static/museum/index.html"),
+        legal: resolve(__dirname, "static/legal/index.html"),
+        privacy: resolve(__dirname, "static/privacy/index.html"),
       },
     },
   },

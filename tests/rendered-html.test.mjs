@@ -40,6 +40,32 @@ test("renders development preview metadata", async () => {
   assert.match(html, /tel:\+79591236876/);
   assert.match(html, /tel:\+79591621807/);
   assert.match(html, /Луганск и область/);
+  assert.match(html, /Выпускные альбомы/);
+  assert.match(html, /для 4, 9 и 11 классов/);
+  assert.match(html, /application\/ld\+json/);
+  assert.match(html, /href="\/legal\/"/);
+  assert.match(html, /href="\/privacy\/"/);
   assert.match(html, /2027/);
   assert.doesNotMatch(html, /\b2026\b/);
+});
+
+test("renders legal and privacy routes", async () => {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("legal-test", `${process.pid}-${Date.now()}`);
+  const { default: worker } = await import(workerUrl.href);
+  const env = { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } };
+  const ctx = { waitUntil() {}, passThroughOnException() {} };
+
+  const [legalResponse, privacyResponse] = await Promise.all([
+    worker.fetch(new Request("http://localhost/legal", { headers: { accept: "text/html" } }), env, ctx),
+    worker.fetch(new Request("http://localhost/privacy", { headers: { accept: "text/html" } }), env, ctx),
+  ]);
+
+  assert.equal(legalResponse.status, 200);
+  assert.equal(privacyResponse.status, 200);
+  const [legal, privacy] = await Promise.all([legalResponse.text(), privacyResponse.text()]);
+  assert.match(legal, /Правовая информация/);
+  assert.match(legal, /content\/legal-profile\.json/);
+  assert.match(privacy, /Политика обработки персональных данных/);
+  assert.match(privacy, /На сайте нет формы заявки/);
 });
